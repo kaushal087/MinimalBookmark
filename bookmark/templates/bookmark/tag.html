@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+<link rel="stylesheet" type="text/css" href="{% static 'bookmark/style.css' %}" />
+
+<body>
+ 
+<h2>Listing Tags</h2>
+<div id="tags">
+
+<!--
+{% if not newTag %}
+	Tag created successfully<br/>
+{% endif %}
+-->
+{% if tag_list %}
+    {% for tagRow in tag_list %}
+        <b>Name: </b>{{ tagRow.Tag }}<br/><br/><a href="/tags/{{tagRow.TagID}}/edit">Edit</a> | <a href="/tags/{{tagRow.TagID}}">Back</a><br/>
+    {% endfor %}
+
+{% else %}
+    <p>No tags are available.</p>
+{% endif %}
+</div>
+</body>

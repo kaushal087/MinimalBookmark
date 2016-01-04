@@ -1,0 +1,43 @@
+{% load staticfiles %}
+<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+<link rel="stylesheet" type="text/css" href="{% static 'bookmark/style.css' %}" />
+ 
+
+
+ <body>
+
+<div id="tagbox">
+<div id="url">
+{% if url_list %}
+    
+    {% for urlRow in url_list %}
+        <b>URL:</b> <a href="{{ urlRow.URL }}">{{ urlRow.URL }}</a>
+    {% endfor %}
+
+{% else %}
+    <p>No URL are available.</p>
+{% endif %}
+</div>
+<div id="title">
+
+<b>Title: </b>{{title}}
+
+</div>
+
+
+<div id="tag">
+{% if tag_list %}
+
+<b>Tags: </b><br/>
+    {% for tag in tag_list %}
+        {{tag}}<br/>
+    {% endfor %}
+
+{% else %}
+    <p>No Tags are available.</p>
+{% endif %}
+</div>
+</div>
+</body>

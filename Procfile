@@ -1,0 +1,1 @@
+web: gunicorn MinimalBookmark.wsgi --log-file -
