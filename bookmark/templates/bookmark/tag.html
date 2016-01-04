@@ -16,7 +16,7 @@
 -->
 {% if tag_list %}
     {% for tagRow in tag_list %}
-        <b>Name: </b>{{ tagRow.Tag }}<br/><br/><a href="/tags/{{tagRow.TagID}}/edit">Edit</a> | <a href="/tags/{{tagRow.TagID}}">Back</a><br/>
+        <b>Name: </b>{{ tagRow.Tag }}<br/><br/><a href="/tags/{{tagRow.TagID}}/edit">Edit</a> | <a href="/tags/">Back</a><br/>
     {% endfor %}
 
 {% else %}

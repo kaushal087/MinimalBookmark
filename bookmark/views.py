@@ -36,7 +36,7 @@ def destroyTag(request):
 def searchBookmark(request):
 	
 	print "searchBookmark"
-	Tag =str(request.POST['tag'])
+	Tag =str(request.POST['tag']).strip()
 	print Tag
 	
 	tag_list = t_tag.objects.filter(Tag=Tag)
@@ -82,7 +82,7 @@ def addBookmark(request):
 	addstring =  str(request.POST['urltag'])
 	addstring =  addstring.split(',')
 	
-	URL = str(addstring[0])
+	URL = str(addstring[0]).strip()
 
 	# insert URL and store URLID in URLID variable 	
 	objURL = t_url.objects.create(URL=URL)
@@ -92,7 +92,7 @@ def addBookmark(request):
 
 	#insert or get Tag obj
 	for Tag in addstring[1:]:
-		Tag = str(Tag)
+		Tag = str(Tag).strip()
 		objTag, tagCreated = t_tag.objects.get_or_create(Tag=Tag)
 		objTag.save()
 		TagID = objTag.TagID
@@ -107,7 +107,7 @@ def updateBookmarkAndShow(request, url_id):
 	print request.POST
 
 	#newTag =  str(request.POST['newTag'])
-	updatedURL = str(request.POST['updatedURL'])
+	updatedURL = str(request.POST['updatedURL']).strip()
 	TagIDList = request.POST.getlist('selectedIds[]')
 
 	obj = t_url_tag.objects.filter(URLID=int(str(url_id))).delete()
@@ -157,7 +157,7 @@ def editURL(request, url_id):
 
 def updateTagAndShow(request, tag_id):
 	if (request.method == 'POST'):
-		updatedTag =  str(request.POST['updatedTag'])
+		updatedTag =  str(request.POST['updatedTag']).strip()
 
 		obj = t_tag.objects.get(TagID=tag_id)
 		obj.Tag = updatedTag
@@ -182,7 +182,7 @@ def editTag(request, tag_id):
 
 def insertTagAndShow(request):
 	if (request.method == 'POST'):
-		newTag =  str(request.POST['newTag'])
+		newTag =  str(request.POST['newTag']).strip()
 		obj = t_tag.objects.create(Tag=newTag)
 		obj.save()
 		print obj.TagID
